@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_whereAmI"
+            android:icon="@drawable/location"
+            android:title="Where am I" />
+        <item
+            android:id="@+id/nav_navigate"
+            android:icon="@drawable/map"
+            android:title="Navigate" />
+        <item
+            android:id="@+id/nav_college"
+            android:icon="@drawable/school"
+            android:title="College" />
+        <item
+            android:id="@+id/nav_nearme"
+            android:icon="@drawable/nearme"
+            android:title="Who's around me" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/about"
+            android:title="About" />
+    </group>
+
+</menu>
