@@ -42,5 +42,6 @@
             android:name=".WhereAmI_Activity"
             android:label="@string/title_activity_where_am_i_"></activity>
     </application>
-
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 </manifest>
