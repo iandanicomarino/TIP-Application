@@ -4,44 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="8dp"
-        map:layout_constraintBottom_toBottomOf="parent"
+    <fragment
+        android:id="@+id/map1"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginEnd="8dp"
-        map:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="7dp"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="7dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintHorizontal_bias="0.47"
         map:layout_constraintLeft_toLeftOf="parent"
+        map:layout_constraintRight_toRightOf="parent"
         map:layout_constraintTop_toTopOf="parent"
-        android:baselineAligned="false">
-
-        <fragment
-            android:id="@+id/map1"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            map:layout_constraintBottom_toBottomOf="parent"
-            map:layout_constraintHorizontal_bias="0.0"
-            map:layout_constraintLeft_toLeftOf="parent"
-            map:layout_constraintRight_toRightOf="parent"
-            map:layout_constraintTop_toTopOf="parent"
-            map:layout_constraintVertical_bias="0.0"
-            tools:context="com.iandanico.tipapplication.WhereAmI_Activity"
-            tools:layout_constraintBottom_creator="1"
-            tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintRight_creator="1"
-            tools:layout_constraintTop_creator="1" />
-    </LinearLayout>
+        map:layout_constraintVertical_bias="0.0"
+        tools:context="com.iandanico.tipapplication.WhereAmI_Activity"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginLeft="8dp" />
 
 
 </android.support.constraint.ConstraintLayout>

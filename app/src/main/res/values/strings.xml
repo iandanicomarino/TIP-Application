@@ -97,4 +97,6 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_where_am_i_">Where Am I</string>
+    <string name="bt_off">Bluetooth Off</string>
+    <string name="bt_on">Bluetooth On</string>
 </resources>

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.ToggleButton;
 
 /**
@@ -22,7 +23,7 @@ public class WhosAroundMe extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.whos_around_me, container, false);
-        ToggleButton bluOnOff = (ToggleButton) myView.findViewById(R.id.bluetoothToggle);
+        Switch bluOnOff = (Switch) myView.findViewById(R.id.switch1);
 
         final boolean btstatus = checkIfBluetoothIsOnOrOff();
         bluOnOff.setChecked(btstatus);
