@@ -1,5 +1,10 @@
 package com.iandanico.tipapplication;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -12,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.location.Address;
+import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -39,7 +45,9 @@ public class WhereAmI extends Fragment implements GoogleMap.OnMyLocationButtonCl
     private boolean mPermissionDenied = false;
     Geocoder geocoder;
     List<Address> addresses;
-
+    private NotificationManager notificationManager;
+    private NotificationCompat.Builder notificationBuilder;
+    int currentNotificationID = 0;
 
     @Nullable
     @Override
@@ -87,6 +95,14 @@ public class WhereAmI extends Fragment implements GoogleMap.OnMyLocationButtonCl
         try {
             addresses = geocoder.getFromLocation(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude(), 1);
             Log.d("WAT", "onMyLocationButtonClick: "+addresses.toString());
+            Address currLocation = addresses.get(0);
+            String notifText = currLocation.getAddressLine(0);
+
+            notificationBuilder = new NotificationCompat.Builder(getActivity())
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setContentTitle("You are here")
+                    .setContentText(notifText);
+            sendNotification();
             return false;
 
         } catch (IOException e) {
@@ -95,5 +111,21 @@ public class WhereAmI extends Fragment implements GoogleMap.OnMyLocationButtonCl
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return false;
+    }
+
+    private void sendNotification() {
+        Intent notificationIntent = new Intent(getActivity(), MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(getActivity(), 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        notificationBuilder.setContentIntent(contentIntent);
+        Notification notification = notificationBuilder.build();
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        notification.defaults |= Notification.DEFAULT_SOUND;
+        currentNotificationID++;
+        int notificationId = currentNotificationID;
+        if (notificationId == Integer.MAX_VALUE - 1)
+            notificationId = 0;
+        Log.d("MEHH", "sendNotification: "+notification.toString());
+        notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(notificationId, notification);
     }
 }
